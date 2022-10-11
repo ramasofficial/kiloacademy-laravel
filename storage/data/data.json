@@ -1,0 +1,44 @@
+[
+    {
+        "offerId": 123,
+        "productTitle": "Coffee machine",
+        "vendorId": 35,
+        "price": 390.4
+    },
+    {
+        "offerId": 124,
+        "productTitle": "Napkins",
+        "vendorId": 35,
+        "price": 15.5
+    },
+    {
+        "offerId": 125,
+        "productTitle": "Chair",
+        "vendorId": 84,
+        "price": 230.0
+    },
+    {
+        "offerId": 126,
+        "productTitle": "Table",
+        "vendorId": 84,
+        "price": 70.0
+    },
+    {
+        "offerId": 127,
+        "productTitle": "Headphones",
+        "vendorId": 99,
+        "price": 25.0
+    },
+    {
+        "offerId": 128,
+        "productTitle": "Fork",
+        "vendorId": 99,
+        "price": 330.0
+    },
+    {
+        "offerId": 129,
+        "productTitle": "Spoon",
+        "vendorId": 99,
+        "price": 130.0
+    }
+]
