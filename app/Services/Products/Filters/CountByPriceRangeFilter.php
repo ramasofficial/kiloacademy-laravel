@@ -18,7 +18,10 @@ class CountByPriceRangeFilter implements ProductFilteringStrategyInterface
 
         /** @var Offer $offer */
         foreach ($offerCollection->getIterator() as $offerKey => $offer) {
-            if ($priceFrom <= $offer->getPrice() && $offer->getPrice() < $priceTo) {
+            if (
+                $offer->getPrice() >= $priceFrom &&
+                $offer->getPrice() <= $priceTo
+            ) {
                 continue;
             }
 

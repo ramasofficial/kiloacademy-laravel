@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Products\DTO\ConsoleInputDTO;
+use App\Services\Products\Model\Offer;
 use App\Services\Products\ProductCountService;
 use Illuminate\Console\Command;
 
@@ -20,9 +21,17 @@ class CountProducts extends Command
             $this->argument('secondArgument'),
         );
 
-        $productsCount = $productCountService->handle($consoleInputDTO)->count();
+        $offersCollection = $productCountService->handle($consoleInputDTO);
 
-        $this->info(sprintf('Products count: %d', $productsCount));
+        $this->info(sprintf('Offers count: %d', $offersCollection->count()));
+
+        $this->newLine();
+        /** @var Offer $offer */
+        foreach ($offersCollection->getIterator() as $offer) {
+            $this->info(
+                sprintf('Offer id: %d: %s, price: %01.2f, vendor id: %d', $offer->getOfferId(), $offer->getProductTitle(), $offer->getPrice(), $offer->getVendorId())
+            );
+        }
 
         return Command::SUCCESS;
     }
