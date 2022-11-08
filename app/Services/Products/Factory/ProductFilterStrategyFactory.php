@@ -12,15 +12,15 @@ use App\Services\Products\Interfaces\ProductFilteringStrategyInterface;
 
 class ProductFilterStrategyFactory
 {
-    public function __construct(
-        private DependencyResolverAdapterInterface $dependencyResolverAdapter
-    ) {
-    }
-
     public const STRATEGIES_MAPPING = [
         'count_by_price_range' => CountByPriceRangeFilter::class,
         'count_by_vendor_id' => CountByVendorIdFilter::class,
     ];
+
+    public function __construct(
+        private DependencyResolverAdapterInterface $dependencyResolverAdapter
+    ) {
+    }
 
     public function build(string $strategy): ProductFilteringStrategyInterface
     {
