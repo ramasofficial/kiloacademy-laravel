@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services\Products\Readers;
 
-use App\Services\Products\Collections\OfferCollection;
+use App\Services\Products\Interfaces\OfferCollectionInterface;
 use App\Services\Products\Interfaces\OfferTransformerInterface;
 use App\Services\Products\Interfaces\ReaderInterface;
-use App\Services\Products\Transformers\OfferTransformer;
 use Exception;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
@@ -29,7 +28,7 @@ class ProductsApiReader implements ReaderInterface
      * @throws GuzzleException
      * @throws JsonException
      */
-    public function read(): OfferCollection
+    public function read(): OfferCollectionInterface
     {
         try {
             $response = $this->client->request('GET', $this->url);

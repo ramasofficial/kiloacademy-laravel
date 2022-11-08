@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Products\Readers;
 
-use App\Services\Products\Collections\OfferCollection;
 use App\Services\Products\Integrations\StorageAdapterInterface;
+use App\Services\Products\Interfaces\OfferCollectionInterface;
 use App\Services\Products\Interfaces\ReaderInterface;
 use App\Services\Products\Transformers\OfferTransformer;
 use JsonException;
@@ -22,7 +22,7 @@ class ProductsJsonReader implements ReaderInterface
     /**
      * @throws JsonException
      */
-    public function read(): OfferCollection
+    public function read(): OfferCollectionInterface
     {
         $contents = file_get_contents($this->storageAdapter->getStoragePath($this->path));
 
