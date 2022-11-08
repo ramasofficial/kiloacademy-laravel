@@ -32,7 +32,9 @@ class ProductsApiReader implements ReaderInterface
     {
         try {
             $response = $this->client->request('GET', $this->url);
-            $encodedContent = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
+            $decodedContent = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
+
+            return $this->offerTransformer->transform($decodedContent);
         } catch (Exception $exception) {
             $this->logger->error('CANNOT_READ_API', [
                 'exception_message' => $exception->getMessage(),
@@ -41,8 +43,6 @@ class ProductsApiReader implements ReaderInterface
 
             throw $exception;
         }
-
-        return $this->offerTransformer->transform($encodedContent);
     }
 
     public function setUrl(string $url): self

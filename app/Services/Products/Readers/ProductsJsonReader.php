@@ -26,8 +26,8 @@ class ProductsJsonReader implements ReaderInterface
     {
         $contents = file_get_contents($this->storageAdapter->getStoragePath($this->path));
 
-        $encodedContent = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
+        $decodedContent = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
 
-        return $this->offerTransformer->transform($encodedContent);
+        return $this->offerTransformer->transform($decodedContent);
     }
 }
