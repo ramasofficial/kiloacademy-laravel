@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/test', App\Http\Controllers\TestController::class);
+Route::get('/scrap', App\Http\Controllers\ScrapController::class);
